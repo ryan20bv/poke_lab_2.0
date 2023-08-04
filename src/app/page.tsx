@@ -1,12 +1,33 @@
 "use client";
 import { Alert } from "flowbite-react";
+import { useEffect } from "react";
 import Image from "next/image";
 import useWindowSize from "./customHooks/use-windowSize";
 import { useRouter } from "next/navigation";
+import { IPokemonByColor } from "./data/dataTypes";
+// for redux purposes
+import { useAppDispatch } from "@/reduxToolkit/store/indexStore";
+import { updatePokemonByColorAction } from "@/reduxToolkit/dashboard/actions/dashboardAction";
 
 const HomePage = () => {
 	const windowSize = useWindowSize();
 	const router = useRouter();
+	const dispatch = useAppDispatch();
+
+	useEffect(() => {
+		const getData = async () => {
+			const result = await fetch(process.env.NEXT_PUBLIC_FRONT_END_URL + "/api");
+
+			const { data } = await result.json();
+
+			const pokemonByColor: IPokemonByColor = {
+				count: data.count,
+				arrayOfColors: data.results,
+			};
+			dispatch(updatePokemonByColorAction(pokemonByColor));
+		};
+		getData();
+	}, [dispatch]);
 
 	const goToDashBoardHandler = () => {
 		router.push("/dashboard");

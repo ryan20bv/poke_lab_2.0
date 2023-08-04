@@ -1,22 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { IPokemonByColor } from "@/app/data/dataTypes";
 
 interface IDashboardState {
-	name: string;
+	pokemonByColor: IDataByColor;
 }
 
 const initialDashboardState: IDashboardState = {
-	name: "Jack",
+	pokemonByColor: {} as IPokemonByColor,
 };
 
 const dashboardSlice = createSlice({
 	name: "Dashboard Slice",
 	initialState: initialDashboardState,
 	reducers: {
-		updateNameRed(state, action) {
-			state.name = action.payload.name;
+		updatePokemonByColorRed(state, action) {
+			state.pokemonByColor = action.payload.pokemonByColor;
 		},
 	},
 });
 
-export const { updateNameRed } = dashboardSlice.actions;
+export const { updatePokemonByColorRed } = dashboardSlice.actions;
 export default dashboardSlice;
