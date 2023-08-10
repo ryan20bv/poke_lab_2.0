@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { IPokemonByColor } from "@/app/data/dataTypes";
 
 interface IDashboardState {
-	pokemonByColor: IDataByColor;
+	pokemonByColor: IPokemonByColor;
 }
 
 const initialDashboardState: IDashboardState = {

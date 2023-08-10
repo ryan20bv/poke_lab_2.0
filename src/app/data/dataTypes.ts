@@ -5,4 +5,5 @@ export interface IPokemonByColor {
 export interface IColor {
 	name: string;
 	url: string;
+	no_of_Pokemon: number;
 }
