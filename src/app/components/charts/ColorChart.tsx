@@ -58,7 +58,6 @@ const ColorChart = () => {
 		setIsLoadingData(false);
 	}, []);
 
-	console.log(colorsName);
 	const chartData = {
 		// labels: [...colorsName],
 		datasets: [
