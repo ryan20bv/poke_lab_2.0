@@ -56,7 +56,7 @@ const ColorChart = () => {
 		setColorsName([...namesOfColors]);
 		dispatch(updateHexColorDataAction(arrayOfHexColor));
 		setIsLoadingData(false);
-	}, []);
+	}, [dispatch, pokemonByColor.arrayOfColors]);
 
 	const chartData = {
 		// labels: [...colorsName],
