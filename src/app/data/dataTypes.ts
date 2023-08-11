@@ -3,7 +3,8 @@ export interface IPokemonByColor {
 	arrayOfColors: IColor[];
 }
 export interface IColor {
-	name: string;
+	id: string;
+	name: any;
 	url: string;
 	no_of_Pokemon: number;
 }

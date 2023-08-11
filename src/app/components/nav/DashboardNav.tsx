@@ -22,12 +22,12 @@ const DashboardNav: React.FC<PropsType> = ({
 								data-drawer-toggle='logo-sidebar'
 								aria-controls='logo-sidebar'
 								type='button'
-								className='inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 border border-gray-200 bg-gray-200'
+								className='inline-flex items-center p-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 border border-gray-200 bg-gray-200'
 								onClick={openSideBarHandler}
 							>
 								<span className='sr-only'>Open sidebar</span>
 								<svg
-									className='w-6 h-6'
+									className='w-4 h-4  p-0'
 									aria-hidden='true'
 									fill='currentColor'
 									viewBox='0 0 20 20'
@@ -47,13 +47,13 @@ const DashboardNav: React.FC<PropsType> = ({
 								data-drawer-toggle='logo-sidebar'
 								aria-controls='logo-sidebar'
 								type='button'
-								className='inline-flex items-center p-2  text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 border border-gray-200 bg-gray-200 text-xs'
+								className='inline-flex items-center p-1  text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 border border-gray-200 bg-gray-200 text-xs'
 								onClick={closeSideBarHandler}
 							>
 								<span className='sr-only'>Close sidebar</span>
 
 								<svg
-									className='w-6 h-6 text-red-500 '
+									className='w-4 h-4 text-red-500 '
 									aria-hidden='true'
 									xmlns='http://www.w3.org/2000/svg'
 									fill='none'
@@ -78,7 +78,7 @@ const DashboardNav: React.FC<PropsType> = ({
 								className='h-8 mr-3'
 								alt='FlowBite Logo'
 							/> */}
-							<span className='self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white'>
+							<span className='self-center text-xl font-semibold md:text-2xl whitespace-nowrap dark:text-white'>
 								PokeLab
 							</span>
 						</a>

@@ -17,7 +17,7 @@ const DashboardLayout: React.FC<PropsType> = ({ children }) => {
 	const [isSideBarOpen, setIsSideBarOpen] = useState<boolean>(true);
 
 	useEffect(() => {
-		if (windowSize.width <= 640) {
+		if (windowSize.width <= 768) {
 			setIsSideBarOpen(false);
 		} else {
 			setIsSideBarOpen(true);

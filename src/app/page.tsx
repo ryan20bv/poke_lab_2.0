@@ -20,7 +20,7 @@ const HomePage = () => {
 			const result = await fetch(process.env.NEXT_PUBLIC_FRONT_END_URL + "/api");
 
 			const { data } = await result.json();
-			console.log(data);
+			// console.log(data);
 
 			const mapOfDataResultUrlPromises: Promise<IColor>[] = data.results.map(
 				(result: any) => {
@@ -29,6 +29,7 @@ const HomePage = () => {
 						const data = await res.json();
 						// console.log(data);
 						const eachData: IColor = {
+							id: Math.random().toString() + "_" + data.name,
 							name: data.name,
 							url: url,
 							no_of_Pokemon: data.pokemon_species.length,

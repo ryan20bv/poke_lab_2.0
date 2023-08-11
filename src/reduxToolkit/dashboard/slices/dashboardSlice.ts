@@ -3,10 +3,12 @@ import { IPokemonByColor } from "@/app/data/dataTypes";
 
 interface IDashboardState {
 	pokemonByColor: IPokemonByColor;
+	hexColorData: string[];
 }
 
 const initialDashboardState: IDashboardState = {
 	pokemonByColor: {} as IPokemonByColor,
+	hexColorData: [],
 };
 
 const dashboardSlice = createSlice({
@@ -16,8 +18,12 @@ const dashboardSlice = createSlice({
 		updatePokemonByColorRed(state, action) {
 			state.pokemonByColor = action.payload.pokemonByColor;
 		},
+		updateHexColorData(state, action) {
+			state.hexColorData = action.payload.hexColorData;
+		},
 	},
 });
 
-export const { updatePokemonByColorRed } = dashboardSlice.actions;
+export const { updatePokemonByColorRed, updateHexColorData } =
+	dashboardSlice.actions;
 export default dashboardSlice;
