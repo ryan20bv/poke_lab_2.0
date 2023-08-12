@@ -94,7 +94,7 @@ const ColorChart = () => {
 								key={eachColor.id}
 								name={eachColor.name}
 								quantity={eachColor.no_of_Pokemon}
-								color={hexColorData[index]}
+								url={eachColor.url}
 							/>
 						))}
 					</section>

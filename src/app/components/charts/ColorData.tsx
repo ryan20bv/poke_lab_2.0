@@ -1,12 +1,18 @@
 import React from "react";
+import { useRouter } from "next/navigation";
+// for redux
+import { useAppDispatch } from "@/reduxToolkit/store/indexStore";
+import { updateSelectedUrlAction } from "@/reduxToolkit/dashboard/actions/dashboardAction";
 
 interface PropsType {
 	name: string;
-	color: string;
+	url: string;
 	quantity: number;
 }
 
-const ColorData: React.FC<PropsType> = ({ name, color, quantity }) => {
+const ColorData: React.FC<PropsType> = ({ name, url, quantity }) => {
+	const router = useRouter();
+	const dispatch = useAppDispatch();
 	const colorClassMap: Record<string, string> = {
 		black: "bg-[#000000]",
 		blue: "bg-[#0000FF]",
@@ -23,10 +29,17 @@ const ColorData: React.FC<PropsType> = ({ name, color, quantity }) => {
 	};
 
 	const bgColor = colorClassMap[name] || "";
+
+	const chooseColorHandler = (url: string) => {
+		console.log(url);
+		dispatch(updateSelectedUrlAction(url));
+		router.push(`/pokemon_by_color/${name}`);
+	};
 	return (
 		<div
 			className='flex border border-black w-40 p-1 text-sm bg-gray-200'
 			key={name}
+			onClick={() => chooseColorHandler(url)}
 		>
 			<p className='w-10'>{name}</p>
 

@@ -17,7 +17,9 @@ const HomePage = () => {
 
 	useEffect(() => {
 		const getData = async () => {
-			const result = await fetch(process.env.NEXT_PUBLIC_FRONT_END_URL + "/api");
+			const result = await fetch(
+				process.env.NEXT_PUBLIC_FRONT_END_URL + "/api/getColorOfPokemon"
+			);
 
 			const { data } = await result.json();
 			// console.log(data);
@@ -47,7 +49,7 @@ const HomePage = () => {
 						count: data.count,
 						arrayOfColors: mapOfDataResultUrl,
 					};
-					console.log(pokemonByColor);
+					// console.log(pokemonByColor);
 					dispatch(updatePokemonByColorAction(pokemonByColor));
 				})
 				.catch((error) => {

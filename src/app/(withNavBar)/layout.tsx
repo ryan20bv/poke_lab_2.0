@@ -39,8 +39,7 @@ const DashboardLayout: React.FC<PropsType> = ({ children }) => {
 				closeSideBarHandler={closeSideBarHandler}
 			/>
 			{isSideBarOpen && <SideBar isSideBarOpen={isSideBarOpen} />}
-
-			{children}
+			<section className='pt-10'>{children}</section>
 		</main>
 	);
 };
