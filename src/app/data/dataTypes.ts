@@ -8,3 +8,12 @@ export interface IColor {
 	url: string;
 	no_of_Pokemon: number;
 }
+export interface IListOfPokemonPerColor {
+	name: string;
+	pokemon_species: IPokemon_Species[];
+}
+
+export interface IPokemon_Species {
+	id: string;
+	name: string;
+}

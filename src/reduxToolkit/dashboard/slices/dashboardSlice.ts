@@ -1,16 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IPokemonByColor } from "@/app/data/dataTypes";
+import { IPokemonByColor, IListOfPokemonPerColor } from "@/app/data/dataTypes";
 
 interface IDashboardState {
 	pokemonByColor: IPokemonByColor;
 	hexColorData: string[];
 	selectedUrl: string;
+	listOfPokemonPerColor: IListOfPokemonPerColor;
 }
 
 const initialDashboardState: IDashboardState = {
 	pokemonByColor: {} as IPokemonByColor,
 	hexColorData: [],
 	selectedUrl: "",
+	listOfPokemonPerColor: {} as IListOfPokemonPerColor,
 };
 
 const dashboardSlice = createSlice({
@@ -26,6 +28,9 @@ const dashboardSlice = createSlice({
 		setSelectedUrlRed(state, action) {
 			state.selectedUrl = action.payload.selectedUrl;
 		},
+		setListOfPokemonPerColorRed(state, action) {
+			state.listOfPokemonPerColor = action.payload.listOfPokemonPerColor;
+		},
 	},
 });
 
@@ -33,5 +38,6 @@ export const {
 	updatePokemonByColorRed,
 	updateHexColorData,
 	setSelectedUrlRed,
+	setListOfPokemonPerColorRed,
 } = dashboardSlice.actions;
 export default dashboardSlice;

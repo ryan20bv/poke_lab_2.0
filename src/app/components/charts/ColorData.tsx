@@ -31,7 +31,6 @@ const ColorData: React.FC<PropsType> = ({ name, url, quantity }) => {
 	const bgColor = colorClassMap[name] || "";
 
 	const chooseColorHandler = (url: string) => {
-		console.log(url);
 		dispatch(updateSelectedUrlAction(url));
 		router.push(`/pokemon_by_color/${name}`);
 	};
