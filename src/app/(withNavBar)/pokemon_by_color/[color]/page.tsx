@@ -49,14 +49,14 @@ const PokemonByColorPage = () => {
 
 	if (isLoading) {
 		return (
-			<div className='border border-black w-screen h-screen  flex items-center justify-center'>
+			<div className='border border-black  flex items-center justify-center'>
 				<h1>loading</h1>
 			</div>
 		);
 	}
 	if (!isLoading) {
 		return (
-			<div className='border border-black w-screen h-screen  flex items-center justify-center'>
+			<div className='border border-black   flex items-center justify-center'>
 				<h1>PokemonByColorPage</h1>
 			</div>
 		);
