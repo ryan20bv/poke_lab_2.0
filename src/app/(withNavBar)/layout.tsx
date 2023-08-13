@@ -23,23 +23,30 @@ const DashboardLayout: React.FC<PropsType> = ({ children }) => {
 			setIsSideBarOpen(true);
 		}
 	}, [windowSize]);
-
 	const openSideBarHandler = () => {
 		setIsSideBarOpen(true);
 	};
 	const closeSideBarHandler = () => {
 		setIsSideBarOpen(false);
 	};
+	const isLargeScreen = windowSize.width > 768 ? true : false;
 
 	return (
-		<main className='h-screen overflow-x-scroll'>
+		<main className='w-screen h-screen'>
 			<DashboardNav
 				isSideBarOpen={isSideBarOpen}
 				openSideBarHandler={openSideBarHandler}
 				closeSideBarHandler={closeSideBarHandler}
 			/>
-			{isSideBarOpen && <SideBar isSideBarOpen={isSideBarOpen} />}
-			<section className='pt-10'>{children}</section>
+			<section className='flex h-full border border-black'>
+				{isSideBarOpen && (
+					<SideBar
+						isSideBarOpen={isSideBarOpen}
+						isLargeScreen={isLargeScreen}
+					/>
+				)}
+				<div className='pt-20 w-full '>{children}</div>
+			</section>
 		</main>
 	);
 };

@@ -75,20 +75,20 @@ const ColorChart = () => {
 	}
 	if (!isLoadingData) {
 		return (
-			<main className='pt-8 flex flex-col items-center justify-center border border-red-300 w-screen h-screen'>
+			<main className='flex flex-col items-center justify-center '>
 				<div className='flex flex-col items-center justify-center sm:flex-row sm:justify-around  '>
 					{/* for larger screen */}
 					<div className='hidden  w-[400px] h-[400px] md:flex flex-col items-center justify-center border border-black  bg-white'>
 						<PolarArea data={chartData} />
 					</div>
 					{/* for smaller screen */}
-					<div className='m-2  w-[250px] h-[250px] flex flex-col items-center justify-center sm:justify-around md:hidden border border-black bg-gray-200'>
+					<div className='m-2  w-[250px] h-[250px] flex flex-col items-center justify-center sm:justify-around md:hidden border border-black  bg-white'>
 						<PolarArea
 							data={chartData}
 							onClick={(e) => console.log(e.target)}
 						/>
 					</div>
-					<section className=' grid grid-cols-2 gap-1 '>
+					<section className=' grid grid-cols-2 gap-2 p-4 mt-4 border border-black bg-white'>
 						{pokemonByColor.arrayOfColors.map((eachColor: IColor, index: number) => (
 							<ColorData
 								key={eachColor.id}

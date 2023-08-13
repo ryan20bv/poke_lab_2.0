@@ -17,3 +17,18 @@ export interface IPokemon_Species {
 	id: string;
 	name: string;
 }
+
+export interface IPokemonData {
+	srcImage: string;
+	type: string;
+	stats: IStats;
+}
+
+export interface IStats {
+	hp: number;
+	attack: number;
+	defense: number;
+	special_Attack: number;
+	special_Defense: number;
+	speed: number;
+}

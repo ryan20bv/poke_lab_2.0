@@ -1,4 +1,5 @@
 import React from "react";
+import AppTitle from "../ui/AppTitle";
 
 interface PropsType {
 	isSideBarOpen: boolean;
@@ -78,9 +79,7 @@ const DashboardNav: React.FC<PropsType> = ({
 								className='h-8 mr-3'
 								alt='FlowBite Logo'
 							/> */}
-							<span className='self-center text-xl font-semibold md:text-2xl whitespace-nowrap dark:text-white'>
-								PokeLab
-							</span>
+							<AppTitle />
 						</a>
 					</div>
 				</div>

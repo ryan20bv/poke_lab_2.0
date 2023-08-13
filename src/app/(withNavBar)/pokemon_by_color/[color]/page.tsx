@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import PokemonCard from "@/app/components/ui/PokemonCard";
 // from redux
 import {
 	useAppDispatch,
@@ -11,7 +12,7 @@ import { updateListOfPokemonPerColorAction } from "@/reduxToolkit/dashboard/acti
 
 const PokemonByColorPage = () => {
 	const dispatch = useAppDispatch();
-	const { selectedUrl } = useAppSelector(
+	const { selectedUrl, listOfPokemonPerColor } = useAppSelector(
 		(state: RootState) => state.dashboardReducer
 	);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -56,9 +57,13 @@ const PokemonByColorPage = () => {
 	}
 	if (!isLoading) {
 		return (
-			<div className='border border-black   flex items-center justify-center'>
-				<h1>PokemonByColorPage</h1>
-			</div>
+			<main className='border border-black   flex items-center justify-center'>
+				<h1>PokemonByColorPage {listOfPokemonPerColor.pokemon_species.length}</h1>
+				<PokemonCard
+					name={listOfPokemonPerColor.pokemon_species[0].name}
+					id={listOfPokemonPerColor.pokemon_species[0].id}
+				/>
+			</main>
 		);
 	}
 };
