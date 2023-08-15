@@ -5,12 +5,7 @@ interface PropsType {
 }
 
 const PokemonByColorLayout: React.FC<PropsType> = ({ children }) => {
-	return (
-		<section className='pt-10 border border-red-400'>
-			<div className='pt-20 '>search</div>
-			{children}
-		</section>
-	);
+	return <section className='pt-10 border border-red-400'>{children}</section>;
 };
 
 export default PokemonByColorLayout;

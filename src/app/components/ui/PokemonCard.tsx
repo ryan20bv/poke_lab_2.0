@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { IPokemonData } from "@/app/data/dataTypes";
 import PokemonStats from "../charts/PokemonStats";
+import FlipCard from "../framer_motion/FlipCard";
 
 interface PropsType {
 	name: string;
@@ -46,35 +47,25 @@ const PokemonCard: React.FC<PropsType> = ({ name, id }) => {
 	console.log(pokemonData);
 
 	return (
-		<main className='border border-black'>
+		<main className='border border-black '>
 			{!isLoading && (
 				<section>
-					<div>
-						<div className='bg-white'>
-							<p>{id}</p>
-							<Image
-								src={pokemonData.srcImage}
-								alt='pokemon'
-								width={150}
-								height={150}
-							/>
-						</div>
-						<header>
-							<h3>{name}</h3>
-							<p>{pokemonData.type}</p>
-						</header>
-					</div>
-					<div>
-						<PokemonStats stats={pokemonData.stats} />
-					</div>
+					<FlipCard
+						id={id}
+						pokemonData={pokemonData}
+					/>
+					<header>
+						<h3>{name}</h3>
+						<p>{pokemonData.type}</p>
+					</header>
 				</section>
 			)}
 			{isLoading && (
 				<Image
 					src='/static/poke-ball.png'
 					alt='pokemon ball'
-					width={150}
-					height={150}
+					width={100}
+					height={100}
 				/>
 			)}
 		</main>

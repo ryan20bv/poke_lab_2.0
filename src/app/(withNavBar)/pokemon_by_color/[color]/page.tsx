@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import PokemonCard from "@/app/components/ui/PokemonCard";
+
 // from redux
 import {
 	useAppDispatch,
@@ -58,7 +59,10 @@ const PokemonByColorPage = () => {
 	if (!isLoading) {
 		return (
 			<main className='border border-black   flex items-center justify-center'>
-				<h1>PokemonByColorPage {listOfPokemonPerColor.pokemon_species.length}</h1>
+				<PokemonCard
+					name={listOfPokemonPerColor.pokemon_species[0].name}
+					id={listOfPokemonPerColor.pokemon_species[0].id}
+				/>
 				<PokemonCard
 					name={listOfPokemonPerColor.pokemon_species[0].name}
 					id={listOfPokemonPerColor.pokemon_species[0].id}
