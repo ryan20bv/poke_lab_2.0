@@ -70,17 +70,18 @@ const DashboardNav: React.FC<PropsType> = ({
 								</svg>
 							</button>
 						)}
-						<a
+						{/* <a
 							href='https://flowbite.com'
 							className='flex ml-2 md:mr-24'
 						>
-							{/* <img
+							<img
 								src='https://flowbite.com/docs/images/logo.svg'
 								className='h-8 mr-3'
 								alt='FlowBite Logo'
-							/> */}
+							/>
 							<AppTitle />
-						</a>
+						</a> */}
+						<AppTitle />
 					</div>
 				</div>
 			</div>

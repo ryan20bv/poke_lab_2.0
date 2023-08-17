@@ -19,6 +19,7 @@ import {
 import { updateHexColorDataAction } from "@/reduxToolkit/dashboard/actions/dashboardAction";
 import { IColor } from "@/app/data/dataTypes";
 import convert from "color-convert";
+import useColorConvert from "@/app/customHooks/use-colorconvert";
 
 ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
 
@@ -28,10 +29,12 @@ const ColorChart = () => {
 		(state: RootState) => state.dashboardReducer
 	);
 
+	const { convertColorNameToRGB } = useColorConvert();
+
 	const [totalPokemonPerColor, setTotalPokemonPerColor] = useState<number[]>([]);
 	const [colorStateToRgba, setColorStateToRgba] = useState<string[]>([]);
 	const [isLoadingData, setIsLoadingData] = useState<boolean>(true);
-	const [colorsName, setColorsName] = useState<string[]>([]);
+
 	useEffect(() => {
 		setIsLoadingData(true);
 
@@ -43,20 +46,25 @@ const ColorChart = () => {
 		pokemonByColor.arrayOfColors.forEach((color: IColor) => {
 			noOfPokemonPerColor.push(color.no_of_Pokemon);
 			namesOfColors.push(color.name);
-			const convertedColor = convert.keyword.rgb(color.name);
-			const convertedColorToRgba = convertedColor.join(",") + ",0.7";
+
+			// const convertedColor = convert.keyword.rgb(color.name);
+			const { convertedColor, convertedColorToRgba, convertedColorToHex } =
+				convertColorNameToRGB(color.name);
+
+			// const convertedColorToRgba = convertedColor.join(",") + ",0.7";
 			colorToRgba.push(`rgba(${convertedColorToRgba})`);
 
-			const convertedColorToHex = convert.rgb.hex(convertedColor);
+			// const convertedColorToHex = convert.rgb.hex(convertedColor);
+
 			arrayOfHexColor.push(`bg-[#${convertedColorToHex}]`);
 		});
 		setTotalPokemonPerColor([...noOfPokemonPerColor]);
 
 		setColorStateToRgba([...colorToRgba]);
-		setColorsName([...namesOfColors]);
+
 		dispatch(updateHexColorDataAction(arrayOfHexColor));
 		setIsLoadingData(false);
-	}, [dispatch, pokemonByColor.arrayOfColors]);
+	}, [dispatch, pokemonByColor.arrayOfColors, convertColorNameToRGB]);
 
 	const chartData = {
 		// labels: [...colorsName],
