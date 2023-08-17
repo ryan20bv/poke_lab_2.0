@@ -26,18 +26,40 @@ interface PropsType {
 
 const PokemonStats: React.FC<PropsType> = ({ stats }) => {
 	const data = {
-		labels: Object.keys(stats),
+		// labels: Object.keys(stats),
+		labels: [1, 2, 3, 4, 5, 6],
 		datasets: [
 			{
 				label: "Stats",
 				data: Object.values(stats),
-				backgroundColor: "rgba(255, 99, 132, 0.2)",
-				borderColor: "rgba(255, 99, 132, 1)",
+				backgroundColor: "rgba(0, 0, 255, 0.2)",
+				borderColor: "rgba(0, 0, 255, 0.2)",
 				borderWidth: 1,
 			},
 		],
 	};
-	return <Radar data={data} />;
+	const options = {
+		scales: {
+			r: {
+				pointLabels: {
+					color: "blue",
+				},
+			},
+		},
+		plugins: {
+			legend: {
+				display: false, // Set this to false to hide the dataset labels in the legend
+			},
+		},
+	};
+	return (
+		<div className='w-40 h-40'>
+			<Radar
+				data={data}
+				options={options}
+			/>
+		</div>
+	);
 };
 
 export default PokemonStats;

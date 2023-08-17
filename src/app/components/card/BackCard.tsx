@@ -11,7 +11,7 @@ interface PropsType {
 const BackCard: React.FC<PropsType> = ({ onFlip, pokemonData }) => {
 	return (
 		<div
-			className=' bg-blue-200 p-4 flex items-center justify-center cursor-pointer'
+			className=' bg-white p-1 flex items-center justify-center cursor-pointer '
 			onClick={onFlip}
 		>
 			<motion.p

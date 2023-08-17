@@ -38,12 +38,12 @@ const PokemonByColorPage = () => {
 				id: pokemon.url.split("/")[6], // Extracting the id from the URL
 			}));
 
-			const listOfPokemonPerColor: IListOfPokemonPerColor = {
+			const transformedPokemonPerColor: IListOfPokemonPerColor = {
 				name: data.name,
 				pokemon_species: transformedData,
 			};
 
-			dispatch(updateListOfPokemonPerColorAction(listOfPokemonPerColor));
+			dispatch(updateListOfPokemonPerColorAction(transformedPokemonPerColor));
 			setIsLoading(false);
 		};
 		getData();
@@ -58,15 +58,21 @@ const PokemonByColorPage = () => {
 	}
 	if (!isLoading) {
 		return (
-			<main className='border border-black   flex items-center justify-center'>
-				<PokemonCard
+			<main className='border border-black   flex flex-wrap items-center justify-center'>
+				{listOfPokemonPerColor.pokemon_species.map(
+					(eachPokemon: IPokemon_Species) => (
+						<PokemonCard
+							key={eachPokemon.id}
+							name={eachPokemon.name}
+							id={eachPokemon.id}
+						/>
+					)
+				)}
+
+				{/* <PokemonCard
 					name={listOfPokemonPerColor.pokemon_species[0].name}
 					id={listOfPokemonPerColor.pokemon_species[0].id}
-				/>
-				<PokemonCard
-					name={listOfPokemonPerColor.pokemon_species[0].name}
-					id={listOfPokemonPerColor.pokemon_species[0].id}
-				/>
+				/> */}
 			</main>
 		);
 	}

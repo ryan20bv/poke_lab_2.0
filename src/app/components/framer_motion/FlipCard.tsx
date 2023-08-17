@@ -17,7 +17,7 @@ const FlipCard: React.FC<PropsType> = ({ id, pokemonData }) => {
 	};
 
 	return (
-		<div className='perspective-origin-center'>
+		<div className='perspective-origin-center w-40'>
 			{/* // <div className='w-64 h-80 '> */}
 			<motion.div
 				// className={`w-full h-full absolute transform ${

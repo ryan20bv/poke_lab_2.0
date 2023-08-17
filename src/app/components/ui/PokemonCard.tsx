@@ -20,9 +20,9 @@ const PokemonCard: React.FC<PropsType> = ({ name, id }) => {
 			setIsLoading(true);
 			try {
 				const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
-				console.log(response);
+
 				const data = await response.json();
-				console.log(data);
+
 				const pokemon: IPokemonData = {
 					srcImage: data.sprites.front_default,
 					type: data.types[0].type.name,
@@ -44,10 +44,9 @@ const PokemonCard: React.FC<PropsType> = ({ name, id }) => {
 		};
 		getPokemonData();
 	}, [id]);
-	console.log(pokemonData);
 
 	return (
-		<main className='border border-black '>
+		<main className='border border-black m-2'>
 			{!isLoading && (
 				<section>
 					<FlipCard
