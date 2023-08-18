@@ -1,8 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import DashboardNav from "../components/nav/DashboardNav";
-import SideBar from "../components/ui/SideBar";
-import useWindowSize from "../customHooks/use-windowSize";
+import DashboardNav from "../_components/nav/DashboardNav";
+import SideBar from "../_components/ui/SideBar";
+import useWindowSize from "../_customHooks/use-windowSize";
 
 export const metadata = {
 	title: "Dashboard PokeLab",

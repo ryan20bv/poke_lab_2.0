@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IPokemonByColor, IListOfPokemonPerColor } from "@/app/data/dataTypes";
+import { IPokemonByColor, IListOfPokemonPerColor } from "@/app/_data/dataTypes";
 
 interface IDashboardState {
 	pokemonByColor: IPokemonByColor;

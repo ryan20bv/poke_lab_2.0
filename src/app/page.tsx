@@ -2,9 +2,9 @@
 import { Alert } from "flowbite-react";
 import { useEffect } from "react";
 import Image from "next/image";
-import useWindowSize from "./customHooks/use-windowSize";
+import useWindowSize from "./_customHooks/use-windowSize";
 import { useRouter } from "next/navigation";
-import { IPokemonByColor, IColor } from "./data/dataTypes";
+import { IPokemonByColor, IColor } from "./_data/dataTypes";
 // for redux purposes
 import { useAppDispatch } from "@/reduxToolkit/store/indexStore";
 import { updatePokemonByColorAction } from "@/reduxToolkit/dashboard/actions/dashboardAction";
