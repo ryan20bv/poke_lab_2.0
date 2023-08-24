@@ -9,7 +9,9 @@ const reducers = combineReducers({
 	dashboardReducer: dashboardSlice.reducer,
 });
 
-const persistConfig = {
+// !this is with persistent storage
+
+/* const persistConfig = {
 	key: "root",
 	storage,
 	blacklist: [],
@@ -31,6 +33,24 @@ export type AppDispatch = typeof indexStore.dispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export const useAppDispatch: () => AppDispatch = useDispatch;
 
-// export default indexStore;
 
-export const persistor = persistStore(indexStore);
+
+export const persistor = persistStore(indexStore); */
+
+// !this is with out persistent store
+
+export const indexStore = configureStore({
+	reducer: reducers,
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware({
+			serializableCheck: false, // Disable serializable check for redux-persist
+		}),
+});
+
+export type RootState = ReturnType<typeof indexStore.getState>;
+export type AppDispatch = typeof indexStore.dispatch;
+
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+export const useAppDispatch: () => AppDispatch = useDispatch;
+
+export default indexStore;

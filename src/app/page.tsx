@@ -2,12 +2,13 @@
 import { Alert } from "flowbite-react";
 import { useEffect } from "react";
 import Image from "next/image";
-import useWindowSize from "./customHooks/use-windowSize";
+import useWindowSize from "./_customHooks/use-windowSize";
 import { useRouter } from "next/navigation";
-import { IPokemonByColor } from "./data/dataTypes";
+import { IPokemonByColor, IColor } from "./_data/dataTypes";
 // for redux purposes
 import { useAppDispatch } from "@/reduxToolkit/store/indexStore";
 import { updatePokemonByColorAction } from "@/reduxToolkit/dashboard/actions/dashboardAction";
+import { each } from "chart.js/dist/helpers/helpers.core";
 
 const HomePage = () => {
 	const windowSize = useWindowSize();
@@ -16,15 +17,49 @@ const HomePage = () => {
 
 	useEffect(() => {
 		const getData = async () => {
-			const result = await fetch(process.env.NEXT_PUBLIC_FRONT_END_URL + "/api");
+			const result = await fetch(
+				process.env.NEXT_PUBLIC_FRONT_END_URL + "/api/getColorOfPokemon"
+			);
 
 			const { data } = await result.json();
+			// console.log(data);
 
-			const pokemonByColor: IPokemonByColor = {
-				count: data.count,
-				arrayOfColors: data.results,
-			};
-			dispatch(updatePokemonByColorAction(pokemonByColor));
+			const mapOfDataResultUrlPromises: Promise<IColor>[] = data.results.map(
+				(result: any) => {
+					const getTotalPokemonPerColor = async (url: string) => {
+						const res = await fetch(url);
+						const data = await res.json();
+						// console.log(data);
+						const eachData: IColor = {
+							id: Math.random().toString() + "_" + data.name,
+							name: data.name,
+							url: url,
+							no_of_Pokemon: data.pokemon_species.length,
+						};
+
+						return eachData;
+					};
+					return getTotalPokemonPerColor(result.url);
+				}
+			);
+			// Wait for all the promises to resolve using Promise.all
+			Promise.all(mapOfDataResultUrlPromises)
+				.then((mapOfDataResultUrl: IColor[]) => {
+					const pokemonByColor: IPokemonByColor = {
+						count: data.count,
+						arrayOfColors: mapOfDataResultUrl,
+					};
+					// console.log(pokemonByColor);
+					dispatch(updatePokemonByColorAction(pokemonByColor));
+				})
+				.catch((error) => {
+					console.error("An error occurred:", error);
+				});
+			// const pokemonByColor: IPokemonByColor = {
+			// 	count: data.count,
+			// 	arrayOfColors: mapOfDataResultUrl,
+			// };
+			// dispatch(updatePokemonByColorAction(pokemonByColor));
 		};
 		getData();
 	}, [dispatch]);
