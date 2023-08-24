@@ -1,5 +1,5 @@
 import React from "react";
-import ColorChart from "../../components/charts/ColorChart";
+import ColorChart from "../../_components/charts/ColorChart";
 
 const DashboardPage = () => {
 	return <ColorChart />;

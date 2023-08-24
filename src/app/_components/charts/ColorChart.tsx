@@ -17,9 +17,9 @@ import {
 	RootState,
 } from "@/reduxToolkit/store/indexStore";
 import { updateHexColorDataAction } from "@/reduxToolkit/dashboard/actions/dashboardAction";
-import { IColor } from "@/app/data/dataTypes";
+import { IColor } from "@/app/_data/dataTypes";
 import convert from "color-convert";
-import useColorConvert from "@/app/customHooks/use-colorconvert";
+import useColorConvert from "@/app/_customHooks/use-colorconvert";
 
 ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
 

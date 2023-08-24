@@ -33,11 +33,11 @@ const DashboardLayout: React.FC<PropsType> = ({ children }) => {
 
 	return (
 		<main className='w-screen h-screen'>
-			<DashboardNav
+			{/* <DashboardNav
 				isSideBarOpen={isSideBarOpen}
 				openSideBarHandler={openSideBarHandler}
 				closeSideBarHandler={closeSideBarHandler}
-			/>
+			/> */}
 			<section className='flex h-full border border-black'>
 				{isSideBarOpen && (
 					<SideBar

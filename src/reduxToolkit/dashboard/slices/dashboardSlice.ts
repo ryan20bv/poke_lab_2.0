@@ -1,7 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IPokemonByColor, IListOfPokemonPerColor } from "@/app/_data/dataTypes";
+import {
+	IPokemonByColor,
+	IListOfPokemonPerColor,
+	IPokemonType,
+} from "@/app/_data/dataTypes";
 
 interface IDashboardState {
+	rawTypesOfPokemon: IPokemonType;
 	pokemonByColor: IPokemonByColor;
 	hexColorData: string[];
 	selectedUrl: string;
@@ -9,6 +14,7 @@ interface IDashboardState {
 }
 
 const initialDashboardState: IDashboardState = {
+	rawTypesOfPokemon: {} as IPokemonType,
 	pokemonByColor: {} as IPokemonByColor,
 	hexColorData: [],
 	selectedUrl: "",
@@ -19,6 +25,9 @@ const dashboardSlice = createSlice({
 	name: "Dashboard Slice",
 	initialState: initialDashboardState,
 	reducers: {
+		getRawTypesOfPokemon(state, action) {
+			state.rawTypesOfPokemon = action.payload.rawTypesOfPokemon;
+		},
 		updatePokemonByColorRed(state, action) {
 			state.pokemonByColor = action.payload.pokemonByColor;
 		},
@@ -35,6 +44,7 @@ const dashboardSlice = createSlice({
 });
 
 export const {
+	getRawTypesOfPokemon,
 	updatePokemonByColorRed,
 	updateHexColorData,
 	setSelectedUrlRed,

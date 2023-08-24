@@ -1,10 +1,21 @@
-import { IPokemonByColor, IListOfPokemonPerColor } from "@/app/data/dataTypes";
 import {
+	IPokemonType,
+	IPokemonByColor,
+	IListOfPokemonPerColor,
+} from "@/app/_data/dataTypes";
+import {
+	getRawTypesOfPokemon,
 	updatePokemonByColorRed,
 	updateHexColorData,
 	setSelectedUrlRed,
 	setListOfPokemonPerColorRed,
 } from "../slices/dashboardSlice";
+
+// get the list of pokemon types
+export const getRawTypesOfPokemonAction =
+	(data: IPokemonType) => async (dispatch: any, getState: any) => {
+		dispatch(getRawTypesOfPokemon({ rawTypesOfPokemon: data }));
+	};
 
 // save to redux the data for the pokemon by colors
 export const updatePokemonByColorAction =
